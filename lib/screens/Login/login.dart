@@ -3,6 +3,9 @@ import '../../util/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../screens/homescreen.dart';
 
+import '../bottomnavigation.dart';
+import '../homescreen.dart';
+
 class LogIn extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -93,8 +96,7 @@ class LogIn extends StatelessWidget {
                         auth.logIn(emailController.text,passwordController.text).then((hasLoggedIn) {
                           if(hasLoggedIn){
                             Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen()));
-
+                              context, MaterialPageRoute(builder: (context) => BottomNavigation()));
                           } else(print("Either email or password does not exist"));
                         });
                       },

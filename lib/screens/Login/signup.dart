@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upkeep/screens/bottomnavigation.dart';
 import '../../util/auth.dart';
 import '../../schemas/users.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -148,7 +149,7 @@ class SignUp extends StatelessWidget {
                           Users users = Users(usernameController.text.trim(),emailController.text.trim(),passwordController.text.trim());
                           auth.signUp(users);
                           Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                              context, MaterialPageRoute(builder: (context) => BottomNavigation()));
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),

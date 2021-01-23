@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   firebase_database:
   firebase_core:
+  image_picker:
+  firebase_storage:
+  permission_handler:
   provider:
 
 

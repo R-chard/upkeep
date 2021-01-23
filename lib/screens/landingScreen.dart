@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
-
 import 'Login/login.dart';
+import '../util/data.dart';
 
 class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Data.getListings();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(

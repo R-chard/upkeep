@@ -1,105 +1,167 @@
 import 'package:flutter/material.dart';
-import 'package:upkeep/screens/Login/signup.dart';
-import 'Login/login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../util/data.dart';
 
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            child: Image.asset('assets/images/logo.png'),
-          ),
-          Center(
-            child: Container(
-              margin: EdgeInsets.only(bottom: 300),
-              child: Text(
-                'DESIGNED FOR WORKING PLEASURE',
-                style: TextStyle(
-                    color: Colors.greenAccent,
-                    fontFamily: 'Roboto',
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2.5),
+      body: Container(
+          child: Column(children: [
+        Container(
+          padding: EdgeInsets.only(left: 20, top: 30),
+          alignment: Alignment.topLeft,
+          child: Text(
+            'Popular Now',
+            style: GoogleFonts.comfortaa(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 36,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.circular(5)),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LogIn(),
-                        ),
-                      );
-                    },
-                    minWidth: 150.0,
-                    height: 40.0,
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Roboto',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        FutureBuilder(
+            future: Data.getListings(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              // What is displayed until data is loaded
+              if (!snapshot.hasData) {
+                return Container(child: Center(child: Text("Loading...")));
+              } else {
+                return Expanded(
+                    child: SizedBox(
+                        height: 200.0,
+                        child: new ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int index) =>
+                                _renderListBody(context, index, snapshot))));
+              }
+            }),
+      ])),
+    );
+  }
+
+  Widget _renderListBody(
+      BuildContext context, int index, AsyncSnapshot snapshot) {
+    return Card(
+      child: Column(
+        children: [
+          Image.network(snapshot.data[index].imageUrl),
+          SizedBox(
+            height: 15,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              snapshot.data[index].title,
+              style: GoogleFonts.comfortaa(
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
                 ),
-                SizedBox(
-                  width: 5,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: FlatButton(
-                    color: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.circular(5)),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUp(),
-                        ),
-                      );
-                    },
-                    minWidth: 150.0,
-                    height: 40.0,
-                    child: Text(
-                      'Register',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Roboto',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Essex, UK',
+              style: GoogleFonts.comfortaa(
+                textStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w200,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            snapshot.data[index].description,
+            style: GoogleFonts.comfortaa(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'last donation: 4m ago\n£${snapshot.data[index].currentFund} of £${snapshot.data[index].fundRequired}',
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  color: Color(0xff324982),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 800,
+            child: Slider(
+              activeColor: Color(0xff407E3F),
+              inactiveColor: Colors.grey,
+              value: snapshot.data[index].currentFund.toDouble(),
+              max: snapshot.data[index].fundRequired.toDouble(),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.thumb_up_alt_outlined,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(snapshot.data[index].likes.toString())
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.comment,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(snapshot.data[index].comments.toString())
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.share_outlined,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(snapshot.data[index].shares.toString())
+                ],
+              )
+            ],
+          )
         ],
       ),
     );

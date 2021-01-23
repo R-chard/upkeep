@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LogIn extends StatelessWidget {
   @override
@@ -19,8 +20,12 @@ class LogIn extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Log in',
-                      style: TextStyle(
-                        fontSize: 25,
+                      style: GoogleFonts.comfortaa(
+                        textStyle: TextStyle(
+                          color: Color(0xff324982),
+                          fontSize: 36,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),

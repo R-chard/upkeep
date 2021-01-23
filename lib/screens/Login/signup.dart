@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'login.dart';
 
@@ -25,8 +26,12 @@ class SignUp extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Register',
-                        style: TextStyle(
-                          fontSize: 25,
+                        style: GoogleFonts.comfortaa(
+                          textStyle: TextStyle(
+                            color: Color(0xff324982),
+                            fontSize: 36,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ),

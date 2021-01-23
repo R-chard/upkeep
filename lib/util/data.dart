@@ -1,5 +1,5 @@
 import "package:firebase_database/firebase_database.dart";
-import "./schemas/listing.dart";
+import '../schemas/listing.dart';
 
 class Data{
   static Future<List<Listing>> getListing() async {
@@ -8,4 +8,6 @@ class Data{
     var keys = snapshot.value;
     return data;
   }
+
+  //static Future<>
 }

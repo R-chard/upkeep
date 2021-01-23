@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
+import 'package:provider/provider.dart';
 
 class LogIn extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +32,7 @@ class LogIn extends StatelessWidget {
                     height: 20,
                   ),
                   new TextFormField(
+                    controller: emailController,
                     decoration: new InputDecoration(
                       prefixIcon: Icon(Icons.mail_outline),
                       labelText: "Enter your Email",
@@ -54,6 +59,7 @@ class LogIn extends StatelessWidget {
                     height: 20,
                   ),
                   new TextFormField(
+                    controller: passwordController,
                     decoration: new InputDecoration(
                       labelText: "Enter your Password",
                       fillColor: Colors.white,
@@ -77,7 +83,10 @@ class LogIn extends StatelessWidget {
                   Container(
                     height: 50.0,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        //context.read<AuthenticationService>().signUp(emailController.text.trim(),passwordController.text.trim());
+
+                      },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(80.0)),
                       padding: EdgeInsets.all(0.0),

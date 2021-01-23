@@ -1,9 +1,8 @@
 class Users{
   String username;
+  String email;
   // ToDo: Hash password
   String password;
-  String town;
-  //String email;
 
-  Users(this.username,this.password,this.town);
+  Users(this.username,this.email,this.password,);
 }

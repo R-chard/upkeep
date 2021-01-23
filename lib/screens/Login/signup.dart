@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-
+import '../../util/auth.dart';
+import 'package:provider/provider.dart';
+import '../../schemas/users.dart';
 import 'login.dart';
 
 class SignUp extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
   double screenHeight;
   var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
@@ -34,6 +40,7 @@ class SignUp extends StatelessWidget {
                       height: 20,
                     ),
                     new TextFormField(
+                      controller: usernameController,
                       decoration: new InputDecoration(
                         prefixIcon: Icon(Icons.person),
                         labelText: "Enter your Name",
@@ -60,6 +67,7 @@ class SignUp extends StatelessWidget {
                       height: 20,
                     ),
                     new TextFormField(
+                      controller: emailController,
                       decoration: new InputDecoration(
                         prefixIcon: Icon(Icons.mail_outline),
                         labelText: "Enter your Email",
@@ -86,6 +94,7 @@ class SignUp extends StatelessWidget {
                       height: 20,
                     ),
                     new TextFormField(
+                      controller: passwordController,
                       decoration: new InputDecoration(
                         labelText: "Enter your Password",
                         fillColor: Colors.white,
@@ -130,7 +139,11 @@ class SignUp extends StatelessWidget {
                     Container(
                       height: 50.0,
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Auth auth = Auth();
+                          Users users = Users(usernameController.text.trim(),emailController.text.trim(),passwordController.text.trim());
+                          auth.signUp(users);
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),
                         padding: EdgeInsets.all(0.0),

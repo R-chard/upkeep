@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../bottomnavigation.dart';
 import '../homescreen.dart';
 
 class LogIn extends StatelessWidget {
@@ -88,7 +89,7 @@ class LogIn extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => BottomNavigation(),
                           ),
                         );
                       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'homescreen.dart';
 
 class BottomNavigation extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -23,10 +24,9 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    //TODO Specify the classname of the screens here
-    // Home(),
+    Home(),
     // Notification(),
     // Fundraisers(),
     // Profile()
@@ -48,19 +48,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined, color: Colors.black,),
+            icon: Icon(
+              Icons.home_outlined,
+              color: Colors.black,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active_outlined, color: Colors.black,),
+            icon: Icon(
+              Icons.notifications_active_outlined,
+              color: Colors.black,
+            ),
             label: 'Notifications',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sticky_note_2_outlined, color: Colors.black,),
+            icon: Icon(
+              Icons.sticky_note_2_outlined,
+              color: Colors.black,
+            ),
             label: 'My Fundraisers',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline, color: Colors.black,),
+            icon: Icon(
+              Icons.person_outline,
+              color: Colors.black,
+            ),
             label: 'Profile',
           ),
         ],

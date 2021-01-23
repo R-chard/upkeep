@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../homescreen.dart';
+
 class LogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -82,7 +84,14 @@ class LogIn extends StatelessWidget {
                   Container(
                     height: 50.0,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ),
+                        );
+                      },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(80.0)),
                       padding: EdgeInsets.all(0.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:upkeep/screens/Login/signup.dart';
-import 'package:provider/provider.dart';
+import '../../util/auth.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../screens/homescreen.dart';
 
 class LogIn extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -23,8 +24,12 @@ class LogIn extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Log in',
-                      style: TextStyle(
-                        fontSize: 25,
+                      style: GoogleFonts.comfortaa(
+                        textStyle: TextStyle(
+                          color: Color(0xff324982),
+                          fontSize: 36,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
@@ -84,8 +89,14 @@ class LogIn extends StatelessWidget {
                     height: 50.0,
                     child: RaisedButton(
                       onPressed: () {
-                        //context.read<AuthenticationService>().signUp(emailController.text.trim(),passwordController.text.trim());
+                        Auth auth = Auth();
+                        auth.logIn(emailController.text,passwordController.text).then((hasLoggedIn) {
+                          if(hasLoggedIn){
+                            Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => HomeScreen()));
 
+                          } else(print("Either email or password does not exist"));
+                        });
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(80.0)),

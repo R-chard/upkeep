@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
+
 import 'Login/login.dart';
 
-class HomeScreen extends StatelessWidget {
-
+class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

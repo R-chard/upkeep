@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../util/auth.dart';
-import 'package:provider/provider.dart';
 import '../../schemas/users.dart';
-import 'login.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../homescreen.dart';
 
 class SignUp extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -31,8 +31,12 @@ class SignUp extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Register',
-                        style: TextStyle(
-                          fontSize: 25,
+                        style: GoogleFonts.comfortaa(
+                          textStyle: TextStyle(
+                            color: Color(0xff324982),
+                            fontSize: 36,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ),
@@ -143,6 +147,8 @@ class SignUp extends StatelessWidget {
                           Auth auth = Auth();
                           Users users = Users(usernameController.text.trim(),emailController.text.trim(),passwordController.text.trim());
                           auth.signUp(users);
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => HomeScreen()));
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),

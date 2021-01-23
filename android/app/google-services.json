@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "976019253048",
+    "project_id": "upkeep-279c0",
+    "storage_bucket": "upkeep-279c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976019253048:android:85a00e78c5ca68f42e43cd",
+        "android_client_info": {
+          "package_name": "com.example.upkeep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976019253048-crklgcpjmjcdklth9ckdgiqrv7fa3q3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8_9m9d8BYbiKxmhi3e5rHDzrYces-TrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976019253048-crklgcpjmjcdklth9ckdgiqrv7fa3q3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

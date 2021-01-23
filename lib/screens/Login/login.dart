@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+import 'package:upkeep/screens/Login/signup.dart';
+
+class LogIn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: EdgeInsets.all(30),
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  new TextFormField(
+                    decoration: new InputDecoration(
+                      prefixIcon: Icon(Icons.mail_outline),
+                      labelText: "Enter your Email",
+                      fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 1.5),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 1.5),
+                      ),
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (val) {
+                      if (val.length == 0) {
+                        return "Email cannot be empty";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  new TextFormField(
+                    decoration: new InputDecoration(
+                      labelText: "Enter your Password",
+                      fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 1.5),
+                      ),
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (val) {
+                      if (val.length == 0) {
+                        return "Password cannot be empty";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: 50.0,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80.0)),
+                      padding: EdgeInsets.all(0.0),
+                      child: Ink(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xff2BAFD6), Color(0xff72EFB3)],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0)),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxWidth: MediaQuery.of(context).size.width,
+                              minHeight: 60.0),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'LOG IN',
+                            style: TextStyle(color: Colors.black, fontSize: 15),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

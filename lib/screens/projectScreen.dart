@@ -53,7 +53,7 @@ class ProjectScreenState extends State<ProjectScreen> {
               SizedBox(width: 10),
               Column(children: <Widget>[
                 Text(
-                  "Created by",
+                  "Fundraiser by",
                   style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(
                       color: Colors.grey,
@@ -71,6 +71,24 @@ class ProjectScreenState extends State<ProjectScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: 12),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Icon(
+                        Icons.location_pin,
+                      ),
+                      Text(
+                        widget.listing.location,
+                        style: GoogleFonts.comfortaa(
+                          textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w200,
+                          ),
+                        ),
+                      ),
+                    ]),
               ])
             ]),
         SizedBox(height: 14),
@@ -81,6 +99,12 @@ class ProjectScreenState extends State<ProjectScreen> {
                 fontWeight: FontWeight.w200,
               ),
             )),
+        SizedBox(height: 14),
+        const Divider(
+          color: Colors.green,
+          height: 20,
+          thickness: 5,
+        ),
         SizedBox(height: 14),
         Text("A message from the owner:",
             style: GoogleFonts.comfortaa(
@@ -99,28 +123,59 @@ class ProjectScreenState extends State<ProjectScreen> {
                 fontStyle: FontStyle.italic),
           ),
         ),
-        Text(
-          "This project is currently ${percentageFunded.toString()}% funded",
-          style: GoogleFonts.comfortaa(
-            textStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w200,
+        SizedBox(height: 14),
+        RichText(
+          text: TextSpan(
+            style: GoogleFonts.comfortaa(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w200,
+              ),
             ),
+            children: <TextSpan>[
+              TextSpan(text: "This Project is currently "),
+              TextSpan(
+                text: percentageFunded.toString() + "% ",
+                style: GoogleFonts.comfortaa(
+                  textStyle: TextStyle(
+                    color: Colors.green,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              TextSpan(text: 'funded'),
+            ],
           ),
         ),
-        Slider(
-          activeColor: Color(0xff407E3F),
-          inactiveColor: Colors.grey,
-          value: widget.listing.currentFund.toDouble(),
-          max: widget.listing.fundRequired.toDouble(),
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            valueIndicatorColor: Colors.blue, // This is what you are asking for
+            inactiveTrackColor: Colors.grey, // Custom Gray Color
+            activeTrackColor: Colors.green,
+            thumbColor: Colors.black, // Custom Thumb overlay Color
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+            overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
+          ),
+          child: Slider(
+            value: 180.toDouble(),
+            onChanged: (double newValue) {},
+            divisions: 220,
+            label: "40",
+            min: 90.0,
+            max: 305.0,
+          ),
         ),
         SizedBox(height: 14),
         Container(
+          width: 150,
           height: 50.0,
           child: RaisedButton(
             onPressed: () {},
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(80.0)),
+                borderRadius: BorderRadius.circular(20.0)),
+            padding: EdgeInsets.all(0.0),
             child: Ink(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -131,18 +186,22 @@ class ProjectScreenState extends State<ProjectScreen> {
                   borderRadius: BorderRadius.circular(10.0)),
               child: Container(
                 constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width / 2,
-                    minHeight: 120.0),
+                    maxWidth: MediaQuery.of(context).size.width,
+                    minHeight: 60.0),
                 alignment: Alignment.center,
-                child: Text(
-                  'Donate',
-                  style: TextStyle(color: Colors.black, fontSize: 15),
+                child: Center(
+                  child: Text(
+                    'Donate',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        SizedBox(height: 14),
       ],
     )));
   }

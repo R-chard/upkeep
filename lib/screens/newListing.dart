@@ -20,8 +20,8 @@ class NewListingState extends State<NewListing> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController messageController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
   final TextEditingController fundRequiredController = TextEditingController();
-  final TextEditingController currentFundController = TextEditingController();
 
   @override
   Widget build(BuildContext) {
@@ -115,6 +115,31 @@ class NewListingState extends State<NewListing> {
           height: 20,
         ),
         new TextFormField(
+          controller: locationController,
+          decoration: new InputDecoration(
+            prefixIcon: Icon(Icons.mail_outline),
+            labelText: "City/Country",
+            fillColor: Colors.white,
+            enabledBorder: const OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
+            ),
+            border: const OutlineInputBorder(),
+          ),
+          validator: (val) {
+            if (val.length == 0) {
+              return "City cannot be empty";
+            } else {
+              return null;
+            }
+          },
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        new TextFormField(
           controller: fundRequiredController,
           decoration: new InputDecoration(
             prefixIcon: Icon(Icons.mail_outline),
@@ -144,6 +169,7 @@ class NewListingState extends State<NewListing> {
                   titleController.text,
                   descriptionController.text,
                   messageController.text,
+                  locationController.text,
                   int.parse(fundRequiredController.text),
                   imageUrl);
               Data.addListing(listing);

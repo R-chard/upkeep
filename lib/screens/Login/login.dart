@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../util/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../screens/homescreen.dart';
 
+import '../../util/auth.dart';
 import '../bottomnavigation.dart';
-import '../homescreen.dart';
 
 class LogIn extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -93,11 +91,17 @@ class LogIn extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: () {
                         Auth auth = Auth();
-                        auth.logIn(emailController.text,passwordController.text).then((hasLoggedIn) {
-                          if(hasLoggedIn){
+                        auth
+                            .logIn(
+                                emailController.text, passwordController.text)
+                            .then((hasLoggedIn) {
+                          if (hasLoggedIn) {
                             Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => BottomNavigation()));
-                          } else(print("Either email or password does not exist"));
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavigation()));
+                          } else
+                            (print("Either email or password does not exist"));
                         });
                       },
                       shape: RoundedRectangleBorder(

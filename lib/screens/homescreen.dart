@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Essex, UK',
+                  snapshot.data[index].location,
                   style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(
                       color: Colors.grey,

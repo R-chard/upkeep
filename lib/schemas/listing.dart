@@ -8,9 +8,10 @@ class Listing {
   int shares;
   int comments;
   String imageUrl;
+  String location;
 
-  Listing(this.title, this.description, this.message, this.fundRequired,
-      this.imageUrl,
+  Listing(this.title, this.description, this.message, this.location,
+      this.fundRequired, this.imageUrl,
       [this.currentFund = 0,
       this.likes = 0,
       this.comments = 0,

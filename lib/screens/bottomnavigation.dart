@@ -3,6 +3,7 @@ import 'package:upkeep/screens/Login/notifications.dart';
 import 'package:upkeep/screens/newListing.dart';
 
 import 'homescreen.dart';
+import 'profile.dart';
 
 class BottomNavigation extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -31,7 +32,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Home(),
     Notifications(),
     NewListing(),
-    // Profile()
+    Profile()
   ];
 
   void _onItemTapped(int index) {

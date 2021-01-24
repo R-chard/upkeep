@@ -248,9 +248,12 @@ class NewListingState extends State<NewListing> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
-                  width: 100,
-                  height: 50.0,
+                  width: 250,
+                  height: 60.0,
                   child: RaisedButton(
                     onPressed: () {
                       SharedPreferences.getInstance().then((pref) {
@@ -291,7 +294,7 @@ class NewListingState extends State<NewListing> {
                             'Create Fundraiser',
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 10,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),

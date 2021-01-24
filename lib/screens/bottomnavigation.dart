@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'newListing.dart';
+import 'package:upkeep/screens/Login/notifications.dart';
+import 'package:upkeep/screens/newListing.dart';
+
 import 'homescreen.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -27,8 +29,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     Home(),
-    // Notification(),
-    // Fundraisers(),
+    Notifications(),
+    NewListing(),
     // Profile()
   ];
 
@@ -63,10 +65,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.sticky_note_2_outlined,
+              Icons.add_rounded,
               color: Colors.black,
             ),
-            label: 'My Fundraisers',
+            label: 'Add Fundraiser',
           ),
           BottomNavigationBarItem(
             icon: Icon(

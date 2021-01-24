@@ -16,15 +16,25 @@ class _HomeState extends State<Home> {
       body: Container(
           child: Column(children: [
         Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xff2BAFD6), Color(0xff72EFB3)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              borderRadius: BorderRadius.circular(10.0)),
           padding: EdgeInsets.only(left: 20, top: 30),
           alignment: Alignment.topLeft,
-          child: Text(
-            'Popular Now',
-            style: GoogleFonts.comfortaa(
-              textStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 36,
-                fontWeight: FontWeight.w400,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Popular Now',
+              style: GoogleFonts.comfortaa(
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
           ),
@@ -130,11 +140,24 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 width: 800,
-                child: Slider(
-                  activeColor: Color(0xff407E3F),
-                  inactiveColor: Colors.grey,
-                  value: snapshot.data[index].currentFund.toDouble(),
-                  max: snapshot.data[index].fundRequired.toDouble(),
+                child: SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    valueIndicatorColor:
+                        Colors.blue, // This is what you are asking for
+                    inactiveTrackColor: Color(0xff72EFB3), // Custom Gray Color
+                    activeTrackColor: Color(0xff2BAFD6),
+                    thumbColor: Colors.black, // Custom Thumb overlay Color
+                    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                    overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
+                  ),
+                  child: Slider(
+                    value: 180.toDouble(),
+                    onChanged: (double newValue) {},
+                    divisions: 220,
+                    label: "60",
+                    min: 10.0,
+                    max: 305.0,
+                  ),
                 ),
               ),
               Row(

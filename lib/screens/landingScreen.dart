@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:upkeep/screens/Login/signup.dart';
-import 'Login/login.dart';
+
 import '../util/data.dart';
+import 'Login/login.dart';
 
 class LandingScreen extends StatelessWidget {
   @override
@@ -19,11 +20,11 @@ class LandingScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(bottom: 300),
               child: Text(
-                'DESIGNED FOR WORKING PLEASURE',
+                'Supporting Small Businesses Superbly',
                 style: TextStyle(
-                    color: Colors.greenAccent,
+                    color: Colors.black,
                     fontFamily: 'Roboto',
-                    fontSize: 12.0,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2.5),
               ),

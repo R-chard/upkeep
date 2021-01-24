@@ -1,6 +1,8 @@
 import "package:firebase_database/firebase_database.dart";
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:upkeep/schemas/listing.dart';
 
-import '../schemas/listing.dart';
+import '../schemas/users.dart';
 
 class Data {
   static Future<List<Listing>> getListings() async {
@@ -48,27 +50,22 @@ class Data {
     });
   }
 
-  /*static Future<List<Listing>> getUserProfile(String userID) async {
+  static Future<Users> getUserProfile() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String username = "bill";
+    Users user;
     DataSnapshot snapshot =
         await FirebaseDatabase.instance.reference().child("Users").once();
     for (var key in snapshot.value.keys) {
-      Listing listing = Listing(
-          snapshot.value[key]["title"],
-          snapshot.value[key]["description"],
-          snapshot.value[key]["message"],
-          snapshot.value[key]["location"],
-          snapshot.value[key]["fundRequired"],
-          snapshot.value[key]["imageUrl"],
-          snapshot.value[key]["currentFund"],
-          snapshot.value[key]["likes"],
-          snapshot.value[key]["comments"],
-          snapshot.value[key]["shares"]);
-      data.add(listing);
+      if (snapshot.value[key]["username"] == username) {
+        user = Users(
+            snapshot.value[key]["username"],
+            snapshot.value[key]["email"],
+            snapshot.value[key]["password"],
+            snapshot.value[key]["imageUrl"]);
+
+        return user;
+      }
     }
-    ;
-
-    return data;
-  } */
-
-  //static Future<>
+  }
 }

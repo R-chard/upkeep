@@ -64,6 +64,10 @@ class _HomeState extends State<Home> {
 
   Widget _renderListBody(
       BuildContext context, int index, AsyncSnapshot snapshot) {
+    int percentage = (snapshot.data[index].currentFund /
+            snapshot.data[index].fundRequired *
+            100)
+        .round();
     return Container(
       padding: EdgeInsets.all(13),
       child: Card(
@@ -151,12 +155,12 @@ class _HomeState extends State<Home> {
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
                   ),
                   child: Slider(
-                    value: 180.toDouble(),
+                    value: percentage.toDouble(),
                     onChanged: (double newValue) {},
                     divisions: 220,
-                    label: "60",
-                    min: 10.0,
-                    max: 305.0,
+                    label: percentage.toString(),
+                    min: 0.0,
+                    max: 100.0,
                   ),
                 ),
               ),

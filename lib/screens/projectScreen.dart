@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 
-import '../screens/homescreen.dart';
+import '../screens/bottomnavigation.dart';
 
 class ProjectScreen extends StatefulWidget {
   var listing;
@@ -38,8 +38,10 @@ class ProjectScreenState extends State<ProjectScreen> {
                 IconButton(
                   icon: Icon(Icons.chevron_left),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation()));
                   },
                 ),
                 Padding(

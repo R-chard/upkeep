@@ -101,7 +101,11 @@ class LogIn extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => BottomNavigation()));
                           } else
-                            (print("Either email or password does not exist"));
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  _buildPopup(context),
+                            );
                         });
                       },
                       shape: RoundedRectangleBorder(
@@ -134,6 +138,29 @@ class LogIn extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildPopup(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Error'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+              "Please check that you have entered the correct email address and password!"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Close'),
+        ),
+      ],
     );
   }
 }

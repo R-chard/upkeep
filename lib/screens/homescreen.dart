@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:upkeep/screens/projectScreen.dart';
 
 import '../util/data.dart';
 
@@ -56,6 +57,14 @@ class _HomeState extends State<Home> {
     return Container(
       padding: EdgeInsets.all(13),
       child: Card(
+          child: GestureDetector(
+        onTap: () => {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ProjectScreen(listing: snapshot.data[index])))
+        },
         child: Container(
           padding: EdgeInsets.all(10),
           child: Column(
@@ -169,7 +178,8 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-      ),
+      ) //
+          ),
     );
   }
 }

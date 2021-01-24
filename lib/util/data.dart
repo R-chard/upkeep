@@ -15,7 +15,9 @@ class Data {
           snapshot.value[key]["location"],
           snapshot.value[key]["fundRequired"],
           snapshot.value[key]["imageUrl"],
+          snapshot.value[key]["owner"],
           snapshot.value[key]["currentFund"],
+          snapshot.value[key]["profilePic"],
           snapshot.value[key]["likes"],
           snapshot.value[key]["comments"],
           snapshot.value[key]["shares"]);

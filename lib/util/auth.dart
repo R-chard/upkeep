@@ -4,7 +4,7 @@ import "package:shared_preferences/shared_preferences.dart";
 import '../schemas/users.dart';
 
 class Auth {
-  signUp(Users user) async {
+  Future<bool> signUp(Users user) async {
     DatabaseReference ref =
         FirebaseDatabase.instance.reference().child("Users").push();
     ref.set({
@@ -14,6 +14,7 @@ class Auth {
     });
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString("username", user.username);
+    return true;
   }
 
   Future<bool> logIn(String email, String password) async {

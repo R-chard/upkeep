@@ -150,7 +150,7 @@ class SignUp extends StatelessWidget {
                               usernameController.text.trim(),
                               emailController.text.trim(),
                               passwordController.text.trim());
-                          auth.signUp(users).then(() {
+                          auth.signUp(users).then((val) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

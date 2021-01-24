@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:upkeep/screens/bottomnavigation.dart';
 import 'package:upkeep/screens/landingScreen.dart';
 
 void main() {

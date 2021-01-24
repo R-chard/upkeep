@@ -13,22 +13,22 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: Column(children: [
-        Container(
-          padding: EdgeInsets.only(left: 20, top: 30),
-          alignment: Alignment.topLeft,
-          child: Text(
-            'Popular Now',
-            style: GoogleFonts.comfortaa(
-              textStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 36,
-                fontWeight: FontWeight.w400,
-              ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 80,
+        title: Text(
+          'Popular Now',
+          style: GoogleFonts.comfortaa(
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 35,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),
+      ),
+      body: Container(
+          child: Column(children: [
         SizedBox(
           height: 20,
         ),

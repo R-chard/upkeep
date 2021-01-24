@@ -29,6 +29,7 @@ class Data {
   static addListing(Listing listing) {
     DatabaseReference ref =
         FirebaseDatabase.instance.reference().child("Listing").push();
+
     ref.set({
       "title": listing.title,
       "description": listing.description,
@@ -38,10 +39,34 @@ class Data {
       "location": listing.location,
       "currentFund": listing.currentFund,
       "likes": listing.likes,
+      "owner": listing.owner,
+      "profilePic": listing.profilePic,
       "comments": listing.comments,
-      "shares": listing.shares
+      "shares": listing.shares,
     });
   }
+
+  /*static Future<List<Listing>> getUserProfile(String userID) async {
+    DataSnapshot snapshot =
+        await FirebaseDatabase.instance.reference().child("Users").once();
+    for (var key in snapshot.value.keys) {
+      Listing listing = Listing(
+          snapshot.value[key]["title"],
+          snapshot.value[key]["description"],
+          snapshot.value[key]["message"],
+          snapshot.value[key]["location"],
+          snapshot.value[key]["fundRequired"],
+          snapshot.value[key]["imageUrl"],
+          snapshot.value[key]["currentFund"],
+          snapshot.value[key]["likes"],
+          snapshot.value[key]["comments"],
+          snapshot.value[key]["shares"]);
+      data.add(listing);
+    }
+    ;
+
+    return data;
+  } */
 
   //static Future<>
 }

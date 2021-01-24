@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:upkeep/screens/bottomnavigation.dart';
-import '../../util/auth.dart';
-import '../../schemas/users.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../homescreen.dart';
+import 'package:upkeep/screens/bottomnavigation.dart';
+
+import '../../schemas/users.dart';
+import '../../util/auth.dart';
 
 class SignUp extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -146,10 +146,16 @@ class SignUp extends StatelessWidget {
                       child: RaisedButton(
                         onPressed: () {
                           Auth auth = Auth();
-                          Users users = Users(usernameController.text.trim(),emailController.text.trim(),passwordController.text.trim());
-                          auth.signUp(users);
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => BottomNavigation()));
+                          Users users = Users(
+                              usernameController.text.trim(),
+                              emailController.text.trim(),
+                              passwordController.text.trim());
+                          auth.signUp(users).then(() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavigation()));
+                          });
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),

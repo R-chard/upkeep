@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../schemas/listing.dart';
 import '../util/data.dart';
@@ -165,16 +166,22 @@ class NewListingState extends State<NewListing> {
           height: 50.0,
           child: RaisedButton(
             onPressed: () {
-              Listing listing = Listing(
-                  titleController.text,
-                  descriptionController.text,
-                  messageController.text,
-                  locationController.text,
-                  int.parse(fundRequiredController.text),
-                  imageUrl);
-              Data.addListing(listing);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BottomNavigation()));
+              SharedPreferences.getInstance().then((pref) {
+                String owner = pref.getString("username");
+                Listing listing = Listing(
+                    titleController.text,
+                    descriptionController.text,
+                    messageController.text,
+                    locationController.text,
+                    int.parse(fundRequiredController.text),
+                    owner,
+                    imageUrl);
+                Data.addListing(listing);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BottomNavigation()));
+              });
             },
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(80.0)),

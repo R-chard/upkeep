@@ -89,7 +89,7 @@ class NewListingState extends State<NewListing> {
               elevation: 3,
               child: new TextFormField(
                 cursorColor: Colors.black,
-                controller: titleController,
+                controller: descriptionController,
                 decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.description,
@@ -124,7 +124,7 @@ class NewListingState extends State<NewListing> {
               elevation: 3,
               child: new TextFormField(
                 cursorColor: Colors.black,
-                controller: titleController,
+                controller: messageController,
                 decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.message,
@@ -159,7 +159,7 @@ class NewListingState extends State<NewListing> {
               elevation: 3,
               child: new TextFormField(
                 cursorColor: Colors.black,
-                controller: titleController,
+                controller: locationController,
                 decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.place,
@@ -194,7 +194,7 @@ class NewListingState extends State<NewListing> {
               elevation: 3,
               child: new TextFormField(
                 cursorColor: Colors.black,
-                controller: titleController,
+                controller: fundRequiredController,
                 decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.monetization_on,
@@ -236,8 +236,8 @@ class NewListingState extends State<NewListing> {
                       messageController.text,
                       locationController.text,
                       int.parse(fundRequiredController.text),
-                      owner,
-                      imageUrl);
+                      imageUrl,
+                      owner);
                   Data.addListing(listing);
                   Navigator.push(
                       context,

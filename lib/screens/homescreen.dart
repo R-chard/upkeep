@@ -53,116 +53,122 @@ class _HomeState extends State<Home> {
 
   Widget _renderListBody(
       BuildContext context, int index, AsyncSnapshot snapshot) {
-    return Card(
-      child: Column(
-        children: [
-          Image.network(snapshot.data[index].imageUrl),
-          SizedBox(
-            height: 15,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              snapshot.data[index].title,
-              style: GoogleFonts.comfortaa(
-                textStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Essex, UK',
-              style: GoogleFonts.comfortaa(
-                textStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w200,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            snapshot.data[index].description,
-            style: GoogleFonts.comfortaa(
-              textStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'last donation: 4m ago\n£${snapshot.data[index].currentFund} of £${snapshot.data[index].fundRequired}',
-              style: GoogleFonts.roboto(
-                textStyle: TextStyle(
-                  color: Color(0xff324982),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            width: 800,
-            child: Slider(
-              activeColor: Color(0xff407E3F),
-              inactiveColor: Colors.grey,
-              value: snapshot.data[index].currentFund.toDouble(),
-              max: snapshot.data[index].fundRequired.toDouble(),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      padding: EdgeInsets.all(13),
+      child: Card(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
             children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.thumb_up_alt_outlined,
+              Image.network(snapshot.data[index].imageUrl),
+              SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  snapshot.data[index].title,
+                  style: GoogleFonts.comfortaa(
+                    textStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                  SizedBox(
-                    width: 4,
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Essex, UK',
+                  style: GoogleFonts.comfortaa(
+                    textStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w200,
+                    ),
                   ),
-                  Text(snapshot.data[index].likes.toString())
-                ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                snapshot.data[index].description,
+                style: GoogleFonts.comfortaa(
+                  textStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'last donation: 4m ago\n£${snapshot.data[index].currentFund} of £${snapshot.data[index].fundRequired}',
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      color: Color(0xff324982),
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 800,
+                child: Slider(
+                  activeColor: Color(0xff407E3F),
+                  inactiveColor: Colors.grey,
+                  value: snapshot.data[index].currentFund.toDouble(),
+                  max: snapshot.data[index].fundRequired.toDouble(),
+                ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.comment,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.thumb_up_alt_outlined,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(snapshot.data[index].likes.toString())
+                    ],
                   ),
-                  SizedBox(
-                    width: 4,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.comment,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(snapshot.data[index].comments.toString())
+                    ],
                   ),
-                  Text(snapshot.data[index].comments.toString())
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.share_outlined,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(snapshot.data[index].shares.toString())
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.share_outlined,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(snapshot.data[index].shares.toString())
+                    ],
+                  )
                 ],
               )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

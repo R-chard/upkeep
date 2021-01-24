@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:upkeep/screens/bottomnavigation.dart';
+import 'package:upkeep/screens/landingScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 4), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => BottomNavigation()));
+          context, MaterialPageRoute(builder: (context) => LandingScreen()));
     });
   }
 

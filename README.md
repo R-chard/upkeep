@@ -1,10 +1,8 @@
-UpKeep was my team's submission for Hex Cambridge 2021
+## What it does : 
+Upkeep is an easy and interactive application where users can create a profile through the application, view donation campaigns in various categories and collect vouchers to benefit from the discounts and promotions offered by the campaign owners in the future by donating to these campaigns.
 
 ## Inspiration: 
 We took our inspiration from the problems of owners of small businesses that were adversely affected during the covid-19 process and from other donation tools in the ecosystem. We worked to bring a different perspective to the shortcomings of the ecosystem and to make then donation process more motivating.
-
-## What it does : 
-Upkeep is an easy and interactive application where users can create a profile through the application, view donation campaigns in various categories and collect vouchers to benefit from the discounts and promotions offered by the campaign owners in the future by donating to these campaigns.
 
 ## How we built it : 
 We build Upkeep as a mobile application with Flutter so that the application could run on both iOS and Android devices. We used Firebase as the backend.

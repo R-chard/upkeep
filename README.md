@@ -1,3 +1,5 @@
+UpKeep was my team's submission for Hex Cambridge 2021
+
 ## Inspiration: 
 We took our inspiration from the problems of owners of small businesses that were adversely affected during the covid-19 process and from other donation tools in the ecosystem. We worked to bring a different perspective to the shortcomings of the ecosystem and to make then donation process more motivating.
 
